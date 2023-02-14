@@ -1,5 +1,6 @@
 package mapping;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.jbehave.core.annotations.AfterScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -16,20 +17,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class MappingStep {
 
     WebDriver driver;
-    String localChromeDriverLocation = "/Users/dothigam/jbehavetest/resources/chromedriver";
     String googleUrl = "http://www.google.com";
 
-    @Given("I open Google")
-    public void I_open_google() {
-        System.setProperty("webdriver.chrome.driver", localChromeDriverLocation);
+    @Given("The test user open Google using Google Chrome")
+    public void openGoogleHomepage() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(googleUrl);
 
     }
 
-    @When("I search for my blogs")
-    public void I_serach_for_my_blogs(){
+    @When("User search for key word JBehave")
+    public void searchGoogleKeyword(){
         WebDriverWait wait = new WebDriverWait(driver, 5);
         WebElement eInput = driver.findElement(By.name("q"));
         wait.until(ExpectedConditions.visibilityOf(eInput));
@@ -40,8 +40,8 @@ public class MappingStep {
         eInput.submit();
     }
 
-    @Then("I assert the URL")
-    public void I_assert_the_URL(){
+    @Then("User assert the results include string “What is JBehave?”")
+    public void assertResultReturn(){
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.titleContains("JBehave"));
 
