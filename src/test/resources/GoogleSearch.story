@@ -4,4 +4,4 @@ Narrative: As a user I want open google home page and search for keyword ”JBeh
 Scenario: DEMO Test
 Given The test user open Google using Google Chrome
 When User search for key word JBehave
-Then User assert the results include string “What is JBehave?”
+Then Assert the results include string “What is JBehave?”

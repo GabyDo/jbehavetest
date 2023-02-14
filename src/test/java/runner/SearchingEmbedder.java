@@ -26,12 +26,9 @@ public class SearchingEmbedder extends ConfigurableEmbedder {
     public void run() {
         embedder = configuredEmbedder();
         embedder.configuration();
-        System.out.println("hahahahahah running embdder");
-
         List<String> storyPaths = new StoryFinder().findPaths(codeLocationFromClass(this.getClass()).getFile(),
                 Collections.singletonList("**/*.story"), Arrays.asList(""));
         embedder.runStoriesAsPaths(storyPaths);
-
     }
 
     public Configuration configuration() {
@@ -46,5 +43,27 @@ public class SearchingEmbedder extends ConfigurableEmbedder {
         return new InstanceStepsFactory(configuration(), new MappingStep());
     }
 
+//    using JUnitStories
+//    public class SearchingStories extends JUnitStories {
+//
+//        @Override
+//        public Configuration configuration() {
+//            return new MostUsefulConfiguration()
+//                    .useStoryLoader(new LoadFromClasspath(this.getClass()))
+//                    .useStoryReporterBuilder(new StoryReporterBuilder()
+//                            .withCodeLocation(codeLocationFromClass(this.getClass()))
+//                            .withFormats(CONSOLE));
+//        }
+//
+//        @Override
+//        public InjectableStepsFactory stepsFactory() {
+//            return new InstanceStepsFactory(configuration(), new MappingStep());
+//        }
+//
+//        @Override
+//        public List<String> storyPaths() {
+//            StoryFinder finder = new StoryFinder();
+//            return finder.findPaths(codeLocationFromClass(this.getClass()).getFile(), Collections.singletonList("**/*.story"), Arrays.asList(""));
+//        }
 
 }

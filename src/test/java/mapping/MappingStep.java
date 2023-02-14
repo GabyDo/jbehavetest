@@ -40,7 +40,7 @@ public class MappingStep {
         eInput.submit();
     }
 
-    @Then("User assert the results include string “What is JBehave?”")
+    @Then("Assert the results include string “What is JBehave?”")
     public void assertResultReturn(){
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.titleContains("JBehave"));

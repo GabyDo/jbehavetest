@@ -20,7 +20,7 @@
         </plugins>
     </build>
 
-    <!-- Khai báo biến - Global Variable -->
+    <!--- Global Variable -->
     <properties>
         <!-- Global variable for dependencies -->
         <webdrivermanager.version>4.2.2</webdrivermanager.version>
